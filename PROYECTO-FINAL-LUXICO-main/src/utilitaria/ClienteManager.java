@@ -3,16 +3,13 @@ package utilitaria;
 import java.util.ArrayList;
 
 import negocio.Cliente;
-import servicio.Storage;
 
 public class ClienteManager {
 
     private DatosLuxico datos;
-    private Storage persistencia;
 
-    public ClienteManager(DatosLuxico datos, Storage persistencia) {
+    public ClienteManager(DatosLuxico datos) {
         this.datos = datos;
-        this.persistencia = persistencia;
     }
 
     public Cliente buscarCliente(String cedula) {
@@ -36,7 +33,6 @@ public class ClienteManager {
         if (buscarCliente(c.getCedula()) != null) return false;
 
         datos.clientes.add(c);
-        persistencia.guardarTodo(datos);
         return true;
     }
 
@@ -93,7 +89,6 @@ public class ClienteManager {
             catch (Exception e) { c.setCorreo(nuevoCorreo); }
         }
 
-        persistencia.guardarTodo(datos);
         return ok;
     }
 
@@ -104,7 +99,6 @@ public class ClienteManager {
         for (int i = 0; i < datos.clientes.size(); i++) {
             if (datos.clientes.get(i).getCedula().equals(cedula)) {
                 datos.clientes.remove(i);
-                persistencia.guardarTodo(datos);
                 return true;
             }
         }
