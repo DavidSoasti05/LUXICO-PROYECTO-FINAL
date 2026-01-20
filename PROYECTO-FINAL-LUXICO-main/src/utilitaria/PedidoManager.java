@@ -1,17 +1,16 @@
 package utilitaria;
 
-import servicio.Storage;
 import negocio.*;
 import java.util.ArrayList;
 
 public class PedidoManager {
 
     private DatosLuxico datos;
-    private Storage persistencia;
 
-    public PedidoManager(DatosLuxico datos, Storage persistencia) {
+
+    public PedidoManager(DatosLuxico datos) {
         this.datos = datos;
-        this.persistencia = persistencia;
+
     }
 
     public Pedido buscarPedido(int id) {
@@ -39,7 +38,6 @@ public class PedidoManager {
             Pedido p = new Pedido(id, cliente, fechaCreacion);
             datos.pedidos.add(p);
 
-            persistencia.guardarTodo(datos);
             return id;
 
         } catch (Exception e) {
@@ -58,8 +56,6 @@ public class PedidoManager {
 
             DetallePedido det = new DetallePedido(producto, cantidad);
             boolean ok = ped.agregarDetalle(det);
-
-            if (ok) persistencia.guardarTodo(datos);
             return ok;
 
         } catch (Exception e) {
@@ -130,7 +126,6 @@ public class PedidoManager {
             }
 
             ped.setEstado(EstadoPedido.CONFIRMADO);
-            persistencia.guardarTodo(datos);
             return true;
 
         } catch (Exception e) {
@@ -152,7 +147,6 @@ public class PedidoManager {
             if (actual == EstadoPedido.ENVIADO) return false;
 
             ped.setEstado(nuevoEstado);
-            persistencia.guardarTodo(datos);
             return true;
 
         } catch (Exception e) {
@@ -168,7 +162,6 @@ public class PedidoManager {
             if (p.getEstado() != EstadoPedido.CONFIRMADO) return false;
 
             p.setEstado(EstadoPedido.EN_PREPARACION);
-            persistencia.guardarTodo(datos);
             return true;
 
         } catch (Exception e) {
