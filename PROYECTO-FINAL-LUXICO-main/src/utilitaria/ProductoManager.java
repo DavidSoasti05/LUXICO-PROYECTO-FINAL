@@ -1,17 +1,14 @@
 package utilitaria;
 
-import servicio.Storage;
 import negocio.*;
 import java.util.ArrayList;
 
 public class ProductoManager {
 
     private DatosLuxico datos;
-    private Storage persistencia;
 
-    public ProductoManager(DatosLuxico datos, Storage persistencia) {
+    public ProductoManager(DatosLuxico datos) {
         this.datos = datos;
-        this.persistencia = persistencia;
     }
 
     public boolean agregarProducto(Producto p) {
@@ -23,7 +20,6 @@ public class ProductoManager {
             }
 
             datos.productos.add(p);
-            persistencia.guardarTodo(datos);
             return true;
 
         } catch (Exception e) {
@@ -35,9 +31,8 @@ public class ProductoManager {
         if (p == null) return false;
 
         for (int i = 0; i < datos.productos.size(); i++) {
-            if (datos.productos.get(i) == p) { // misma referencia (OO puro)
+            if (datos.productos.get(i) == p) {
                 datos.productos.remove(i);
-                persistencia.guardarTodo(datos);
                 return true;
             }
         }
@@ -49,7 +44,7 @@ public class ProductoManager {
             if (p == null) return false;
 
             for (int i = 0; i < datos.productos.size(); i++) {
-                if (datos.productos.get(i) == p) return true; // misma referencia
+                if (datos.productos.get(i) == p) return true;
             }
             return false;
 
@@ -92,7 +87,6 @@ public class ProductoManager {
             if (!ok) return false;
 
             datos.movimientos.add(new MovimientoInventario(producto, tipo, cantidad, fecha, motivo));
-            persistencia.guardarTodo(datos);
             return true;
 
         } catch (Exception e) {
