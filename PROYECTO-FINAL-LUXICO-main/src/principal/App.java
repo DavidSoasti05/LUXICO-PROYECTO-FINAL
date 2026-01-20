@@ -451,8 +451,6 @@ public class App extends JFrame {
                 int nuevoStockMin = Integer.parseInt(nuevoStockMinS.trim());
                 if (nuevoStockMin >= 0) p.setStockMin(nuevoStockMin);
 
-                sistema.guardarTodo();
-
                 JOptionPane.showMessageDialog(this, "Producto actualizado.");
                 refrescarTabla();
 
@@ -1006,7 +1004,6 @@ public class App extends JFrame {
                 btnStock.addActionListener(e -> reporteStockCriticoGUI());
                 btnPedidosEstado.addActionListener(e -> reportePedidosPorEstadoGUI());
                 btnVentas.addActionListener(e -> reporteVentasGUI());
-                btnReset.addActionListener(e -> resetGUI());
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error creando reportes.");
@@ -1137,30 +1134,6 @@ public class App extends JFrame {
             }
         }
 
-        private void resetGUI() {
-            try {
-                if (!(usuarioActual instanceof Admin)) {
-                    JOptionPane.showMessageDialog(this, "Solo ADMIN puede hacer RESET.");
-                    return;
-                }
-
-                int op = JOptionPane.showConfirmDialog(this,
-                        "¿Seguro? Se borrarán TODOS los .dat y se reinicia el sistema.",
-                        "RESET",
-                        JOptionPane.YES_NO_OPTION);
-
-                if (op != JOptionPane.YES_OPTION) return;
-
-                sistema.resetSistema();
-                JOptionPane.showMessageDialog(this, "Sistema reiniciado.");
-
-                mainPanel.refrescarTodo();
-                logout();
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Error reseteando sistema.");
-            }
-        }
     }
 
     private void mostrarTexto(String titulo, String texto) {
