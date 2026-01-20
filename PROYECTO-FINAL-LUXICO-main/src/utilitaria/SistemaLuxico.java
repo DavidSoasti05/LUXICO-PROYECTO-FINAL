@@ -1,16 +1,14 @@
 package utilitaria;
 
 import java.util.ArrayList;
+import servicio.DatosBasura;
 
 import negocio.*;
-import servicio.Storage;
 
 public class SistemaLuxico {
 
-    private Storage persistencia;
     private DatosLuxico datos;
 
-    // Módulos
     private Autenticacion auth;
     private ClienteManager clientes;
     private ProductoManager productos;
@@ -18,28 +16,12 @@ public class SistemaLuxico {
     private ReporteManager reportes;
 
     public SistemaLuxico() {
-        persistencia = new Storage();
-        datos = persistencia.cargarTodo();
+        datos = DatosBasura.cargar();
 
         auth = new Autenticacion(datos.usuarios);
-        clientes = new ClienteManager(datos, persistencia);
-        productos = new ProductoManager(datos, persistencia);
-
-        pedidos = new PedidoManager(datos, persistencia);
-        reportes = new ReporteManager(datos);
-    }
-
-    public void guardarTodo() {
-        persistencia.guardarTodo(datos);
-    }
-
-    public void resetSistema() {
-        persistencia.resetSistema(datos);
-
-        auth = new Autenticacion(datos.usuarios);
-        clientes = new ClienteManager(datos, persistencia);
-        productos = new ProductoManager(datos, persistencia);
-        pedidos = new PedidoManager(datos, persistencia);
+        clientes = new ClienteManager(datos);
+        productos = new ProductoManager(datos);
+        pedidos = new PedidoManager(datos);
         reportes = new ReporteManager(datos);
     }
 
