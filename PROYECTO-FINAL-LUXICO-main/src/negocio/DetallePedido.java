@@ -1,8 +1,6 @@
 package negocio;
 
-import java.io.Serializable;
-
-public class DetallePedido implements Serializable {
+public class DetallePedido{
 
     private Producto producto;
     private int cantidad;
