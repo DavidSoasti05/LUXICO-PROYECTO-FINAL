@@ -1,9 +1,7 @@
 package negocio;
 
-import java.io.Serializable;
-
-public class Admin extends Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Admin extends Usuario  {
+    
     public Admin(String usuario, String clave, String nombre) {
         super(usuario, clave, nombre);
     }
