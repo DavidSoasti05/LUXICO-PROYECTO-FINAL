@@ -1,9 +1,7 @@
 package negocio;
 
-import java.io.Serializable;
-
-public class Cliente implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Cliente  {
+    
     private String cedula;
     private String nombre;
     private String direccion;
