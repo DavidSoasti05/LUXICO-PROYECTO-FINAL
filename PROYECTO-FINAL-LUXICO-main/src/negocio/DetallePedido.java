@@ -1,6 +1,7 @@
 package negocio;
 
-public class DetallePedido{
+
+public class DetallePedido {
 
     private Producto producto;
     private int cantidad;
