@@ -95,57 +95,58 @@ public class DatosBasura {
         // =========================
         d.contadorPedidos = 1;
 
+        // Distribuyo las fechas en meses distintos (ene..oct) para el reporte "Compras por mes"
         Pedido ped1 = new Pedido(d.contadorPedidos++, c1, "2026-01-20");
         ped1.agregarDetalle(new DetallePedido(p1, 1));
         ped1.agregarDetalle(new DetallePedido(p2, 2));
         ped1.setEstado(EstadoPedido.PENDIENTE);
         d.pedidos.add(ped1);
 
-        Pedido ped2 = new Pedido(d.contadorPedidos++, c2, "2026-01-21");
+        Pedido ped2 = new Pedido(d.contadorPedidos++, c2, "2026-02-21");
         ped2.agregarDetalle(new DetallePedido(p4, 1));
         ped2.setEstado(EstadoPedido.CONFIRMADO);
         d.pedidos.add(ped2);
 
-        Pedido ped3 = new Pedido(d.contadorPedidos++, c3, "2026-01-21");
+        Pedido ped3 = new Pedido(d.contadorPedidos++, c3, "2026-03-21");
         ped3.agregarDetalle(new DetallePedido(p5, 2));
         ped3.agregarDetalle(new DetallePedido(p12, 1));
         ped3.setEstado(EstadoPedido.EN_PREPARACION);
         d.pedidos.add(ped3);
 
-        Pedido ped4 = new Pedido(d.contadorPedidos++, c4, "2026-01-22");
+        Pedido ped4 = new Pedido(d.contadorPedidos++, c4, "2026-04-22");
         ped4.agregarDetalle(new DetallePedido(p3, 1));
         ped4.setEstado(EstadoPedido.ENVIADO);
         d.pedidos.add(ped4);
 
-        Pedido ped5 = new Pedido(d.contadorPedidos++, c5, "2026-01-22");
+        Pedido ped5 = new Pedido(d.contadorPedidos++, c5, "2026-05-22");
         ped5.agregarDetalle(new DetallePedido(p8, 1));
         ped5.agregarDetalle(new DetallePedido(p11, 1));
         ped5.setEstado(EstadoPedido.CONFIRMADO);
         d.pedidos.add(ped5);
 
-        Pedido ped6 = new Pedido(d.contadorPedidos++, c6, "2026-01-23");
+        Pedido ped6 = new Pedido(d.contadorPedidos++, c6, "2026-06-23");
         ped6.agregarDetalle(new DetallePedido(p9, 1));
         ped6.agregarDetalle(new DetallePedido(p7, 1));
         ped6.setEstado(EstadoPedido.PENDIENTE);
         d.pedidos.add(ped6);
 
-        Pedido ped7 = new Pedido(d.contadorPedidos++, c7, "2026-01-23");
+        Pedido ped7 = new Pedido(d.contadorPedidos++, c7, "2026-07-23");
         ped7.agregarDetalle(new DetallePedido(p13, 1));
         ped7.setEstado(EstadoPedido.EN_PREPARACION);
         d.pedidos.add(ped7);
 
-        Pedido ped8 = new Pedido(d.contadorPedidos++, c8, "2026-01-24");
+        Pedido ped8 = new Pedido(d.contadorPedidos++, c8, "2026-08-24");
         ped8.agregarDetalle(new DetallePedido(p14, 2));
         ped8.agregarDetalle(new DetallePedido(p15, 1));
         ped8.setEstado(EstadoPedido.ENVIADO);
         d.pedidos.add(ped8);
 
-        Pedido ped9 = new Pedido(d.contadorPedidos++, c9, "2026-01-24");
+        Pedido ped9 = new Pedido(d.contadorPedidos++, c9, "2026-09-24");
         ped9.agregarDetalle(new DetallePedido(p19, 3));
         ped9.setEstado(EstadoPedido.CONFIRMADO);
         d.pedidos.add(ped9);
 
-        Pedido ped10 = new Pedido(d.contadorPedidos++, c10, "2026-01-25");
+        Pedido ped10 = new Pedido(d.contadorPedidos++, c10, "2026-10-25");
         ped10.agregarDetalle(new DetallePedido(p20, 1));
         ped10.agregarDetalle(new DetallePedido(p10, 1));
         ped10.setEstado(EstadoPedido.PENDIENTE);
