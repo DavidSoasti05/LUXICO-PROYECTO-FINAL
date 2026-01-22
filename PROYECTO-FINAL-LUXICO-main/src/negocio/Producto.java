@@ -89,6 +89,15 @@ public abstract class Producto  {
         }
     }
 
+    public void setStock(int stock) {
+        try {
+            if (stock < 0) throw new Exception();
+            this.stock = stock;
+        } catch (Exception e) {
+            System.out.println("Error: stock inválido.");
+        }
+    }
+
     public boolean setStockMin(int stockMin) {
         try {
             if (stockMin < 0) throw new Exception();
