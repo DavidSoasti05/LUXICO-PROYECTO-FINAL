@@ -1,7 +1,6 @@
 package negocio;
 
 public class Cliente  {
-    
     private String cedula;
     private String nombre;
     private String direccion;
