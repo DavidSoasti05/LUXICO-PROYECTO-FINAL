@@ -2,7 +2,7 @@ package negocio;
 
 import java.util.ArrayList;
 
-public class Pedido {
+public class Pedido  {
 
     private int id;
     private Cliente cliente;
@@ -52,7 +52,7 @@ public class Pedido {
             for (int i = 0; i < detalles.size(); i++) {
                 DetallePedido d = detalles.get(i);
                 if (d.getCodigoProducto().equals(det.getCodigoProducto())) {
-                    d.setCantidad(d.getCantidad() + det.getCantidad()); // requiere setCantidad en DetallePedido
+                    d.setCantidad(d.getCantidad() + det.getCantidad());
                     return true;
                 }
             }
