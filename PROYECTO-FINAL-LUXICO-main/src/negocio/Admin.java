@@ -1,7 +1,7 @@
 package negocio;
 
 public class Admin extends Usuario  {
-    
+
     public Admin(String usuario, String clave, String nombre) {
         super(usuario, clave, nombre);
     }
