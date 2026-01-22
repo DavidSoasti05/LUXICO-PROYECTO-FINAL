@@ -1,7 +1,6 @@
 package negocio;
 
-
-public class MovimientoInventario {
+public class MovimientoInventario  {
 
     private Producto producto;
 
