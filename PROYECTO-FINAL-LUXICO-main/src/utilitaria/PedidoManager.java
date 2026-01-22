@@ -10,7 +10,6 @@ public class PedidoManager {
 
     public PedidoManager(DatosLuxico datos) {
         this.datos = datos;
-
     }
 
     public Pedido buscarPedido(int id) {
@@ -37,6 +36,37 @@ public class PedidoManager {
 
             Pedido p = new Pedido(id, cliente, fechaCreacion);
             datos.pedidos.add(p);
+
+            return id;
+
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+
+    public int crearPedido(Cliente cliente, String fechaCreacion, Producto producto, int cantidad) {
+        try {
+            if (cliente == null) return -1;
+            if (fechaCreacion == null || fechaCreacion.trim().isEmpty()) return -1;
+            if (producto == null) return -1;
+            if (cantidad <= 0) return -1;
+
+            int id = crearPedido(cliente, fechaCreacion);
+            if (id <= 0) return -1;
+
+            boolean ok = agregarProductoAPedido(id, producto, cantidad);
+            if (!ok) {
+
+                Pedido p = buscarPedido(id);
+                if (p != null) {
+                    for (int i = 0; i < datos.pedidos.size(); i++) {
+                        if (datos.pedidos.get(i).getId() == id) { datos.pedidos.remove(i); break; }
+                    }
+                }
+                if (datos.contadorPedidos > 0) datos.contadorPedidos--;
+                return -1;
+            }
 
             return id;
 
@@ -164,6 +194,23 @@ public class PedidoManager {
             p.setEstado(EstadoPedido.EN_PREPARACION);
             return true;
 
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean eliminarPedido(int idPedido) {
+        try {
+            Pedido p = buscarPedido(idPedido);
+            if (p == null) return false;
+
+            for (int i = 0; i < datos.pedidos.size(); i++) {
+                if (datos.pedidos.get(i).getId() == idPedido) {
+                    datos.pedidos.remove(i);
+                    return true;
+                }
+            }
+            return false;
         } catch (Exception e) {
             return false;
         }
