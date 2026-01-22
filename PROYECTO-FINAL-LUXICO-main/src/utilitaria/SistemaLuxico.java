@@ -102,6 +102,11 @@ public class SistemaLuxico {
         return pedidos.crearPedido(cliente, fechaCreacion);
     }
 
+    // Nuevo: crear pedido y añadir un producto en una sola operación
+    public int crearPedido(Cliente cliente, String fechaCreacion, Producto producto, int cantidad) {
+        return pedidos.crearPedido(cliente, fechaCreacion, producto, cantidad);
+    }
+
     public boolean agregarProductoAPedido(int idPedido, Producto producto, int cantidad) {
         return pedidos.agregarProductoAPedido(idPedido, producto, cantidad);
     }
@@ -124,6 +129,10 @@ public class SistemaLuxico {
 
     public boolean prepararPedido(int idPedido) {
         return pedidos.prepararPedido(idPedido);
+    }
+
+    public boolean eliminarPedido(int idPedido) {
+        return pedidos.eliminarPedido(idPedido);
     }
 
     // =========================
